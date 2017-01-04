@@ -1,0 +1,33 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Review {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner (System.in);
+        int words = in.nextInt();
+        String odd = "";
+        String even = "";
+        
+        //skip a line
+        //in.nextLine();
+        
+        for (int i = 0; i < words; i++){
+            String str = in.nextLine();
+            String[] letters = str.split("");
+
+            for (int j = 0; j < letters.length; j++){
+                if (j % 2 == 0) {
+                    even += letters[j];
+                }
+                else {
+                    odd += letters[j];
+                }
+            }
+            System.out.println(even + " " + odd);
+        }
+    }
+}
