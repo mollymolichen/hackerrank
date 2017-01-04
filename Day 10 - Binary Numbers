@@ -1,0 +1,52 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class BinNums {
+    
+    public int[] decToBinary(int num){
+        int i = 0;                //index for while loop
+        int[] temp = new int[20]; //max = 10^6, ceil(log_2{10^6}) = 20
+        int binary[];
+        
+        while (num > 0){
+            temp[i++] = num % 2;
+            num /= 2;
+        }
+        
+        binary = new int[i];                //use prev stored value of i
+        int k = 0;
+        for (int j = i-1; j >= 0; j--){     //add binary digits in reverse
+            binary[k++] = temp[j];
+        }
+
+        return binary;
+    }
+    
+    public int maxConsecutive(int[] elem){
+        int curr = elem[0];
+        int currCons = 1;
+        int maxCons = 1;
+        for (int i = 1; i < elem.length; i++){
+            if (elem[i] == curr){
+                currCons++;
+                maxCons = Math.max(maxCons, currCons);
+            }
+            else {
+                curr = elem[i];
+                currCons = 1;
+            }
+        }
+        
+        return maxCons;
+    }
+    
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        BinNums s = new BinNums();
+        System.out.println(s.maxConsecutive(s.decToBinary(n)));
+    }
+}
