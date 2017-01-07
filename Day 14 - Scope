@@ -1,0 +1,35 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Scope {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner (System.in);
+        int words = in.nextInt();
+        String odd, even;
+        
+        //skip a line
+        in.nextLine();
+        
+        for (int i = 0; i < words; i++){
+            odd = "";
+            even = "";
+            String str = in.nextLine();
+
+            for (int j = 0; j < str.length(); j++){
+                if (j % 2 == 0) {
+                    even += str.charAt(j);
+                }
+                else {
+                    odd += str.charAt(j);
+                }
+            }
+            System.out.println(even + " " + odd);
+        }
+        
+        in.close();
+    }
+}
